@@ -1,0 +1,79 @@
+common:
+  none: "なし"
+  unknown: "不明"
+
+command:
+  sweep:
+    usage: "&c使用方法: /sweep <status|now|trash>"
+    no-permission-now: "&c現在掃除を実行する権限がありません。"
+    triggered: "&a掃除を実行しました。"
+    no-target: "&e掃除対象のチャンクが見つかりません。"
+    player-only-trash: "&cプレイヤーのみがゴミ箱インベントリを開けます。"
+    unknown-subcommand: "&c不明なサブコマンドです。status、now、trash を使用してください。"
+  sweepbench:
+    usage: "&c使用方法: /sweepbench <run|status|clear>"
+    no-permission-run: "&cベンチマークを実行する権限がありません。"
+    started: "&aベンチマークを開始しました。"
+    already-running: "&e既にベンチマークが実行中です。"
+    no-permission-clear: "&cベンチマークをクリアする権限がありません。"
+    cleared: "&aベンチマークワールドをクリアし、ベンチマークを中止しました。"
+    unknown-subcommand: "&c不明なサブコマンドです。run、status、clear を使用してください。"
+
+sweep:
+  status:
+    header: "&6掃除ステータス"
+    state: "&e状態: {state}"
+    target: "&e対象: {target}"
+    countdown: "&eカウントダウン: {countdown}"
+    global: "&e全体: {current} / {threshold}"
+    global-unavailable: "&e全体: {current} / 利用不可 (ベンチマーク未完了)"
+    top: "&eトップ: {top} / {threshold}"
+    top-unavailable: "&eトップ: {top} / 利用不可"
+  state:
+    idle: "待機中"
+    countdown: "カウントダウン中"
+    cleaning: "掃除中"
+  notify:
+    countdown-start: "&cこのチャンクは{seconds}秒後に掃除されます。"
+    countdown-cancel: "&e閾値未満のため、掃除をキャンセルしました。"
+    cleanup-done: "&a掃除が完了しました。"
+  broadcast:
+    prefix: "&b[Sweep] "
+    status:
+      reached: "到達"
+      not-reached: "未到達"
+    unavailable: "該当なし"
+    actionbar: "合計: {globalCount}/{globalTrigger} | トップ: {topWorld} {topCoords} {topCount}/{chunkTrigger} | 状態: {state}"
+    global: "全体数: {current} / トリガー: {threshold} ({status})"
+    global-unavailable: "全体数: {current} / トリガー: 利用不可 (ベンチマーク未完了)"
+    top: "トップチャンク: {top} / トリガー: {threshold}"
+    top-unavailable: "トップチャンク: {top} / トリガー: 利用不可"
+  trash:
+    title: "パブリックゴミ箱"
+
+sweepbench:
+  status:
+    header: "&6SweepBenchステータス"
+    state: "&e状態: {state}"
+    round: "&eラウンド: {round}"
+    last-slope: "&e最終傾き(シングル/マルチ): {single} / {multi}"
+    thresholds: "&e有効閾値(シングル/エリア): {single} / {area}"
+  state:
+    idle: "待機中"
+    wait_delay: "待機中"
+    check_baseline: "ベースライン確認中"
+    round_single: "シングルチャンク"
+    clean: "掃除中"
+    round_multi: "マルチチャンク"
+    save: "保存中"
+  round:
+    single: "シングル"
+    multi: "マルチ"
+
+log:
+  command-not-registered: "コマンド {command} が plugin.yml に登録されていません。"
+  benchmark-world-unavailable: "ベンチマークワールドが利用できません。"
+  benchmark-baseline-too-high: "ベースラインMSPT >= 40msのため、ベンチマークをキャンセルしました。"
+  benchmark-save-failed: "ベンチマーク結果の保存に失敗しました: {error}"
+  invalid-material: "ホワイトリストに無効なマテリアルが存在します: {material}"
+  invalid-entity-type: "ホワイトリストに無効なエンティティタイプが存在します: {entity}"
